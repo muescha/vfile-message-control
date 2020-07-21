@@ -1,0 +1,40 @@
+{
+  "name": "vfile-message-control",
+  "version": "1.0.0",
+  "description": "vFile message control",
+  "main": "index.js",
+  "scripts": {
+    "test": "eslint index.js test.js && c8 --check-coverage --lines 100 --functions 100 --branches 100 node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/muescha/vfile-message-control.git"
+  },
+  "keywords": [
+    "remark",
+    "lint",
+    "markdown",
+    "md",
+    "strings",
+    "message",
+    "vfile",
+    "filter"
+  ],
+  "author": "Michael Nietzold",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/muescha/vfile-message-control/issues"
+  },
+  "homepage": "https://github.com/muescha/vfile-message-control#readme",
+  "dependencies": {
+    "chalk": "^4.0.0",
+    "minimatch": "^3.0.4",
+    "unified-lint-rule": "^1.0.2"
+  },
+  "devDependencies": {
+    "c8": "^7.0.0",
+    "eslint": "^6.8.0",
+    "tape": "^4.13.2",
+    "vfile": "^4.0.1"
+  }
+}
