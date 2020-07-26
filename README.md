@@ -45,3 +45,7 @@ Example configuration:
 ```
 
 ![Screenshot](./screenshot.png)
+
+## Note
+
+It not removes messages from plugins which attach to FileSet with `fileSet.use()` like `remark-validate-links`.
