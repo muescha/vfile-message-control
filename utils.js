@@ -1,3 +1,5 @@
+"use strict"
+
 const minimatch = require("minimatch")
 
 // Utils
