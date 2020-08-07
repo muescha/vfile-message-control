@@ -9,6 +9,7 @@ module.exports = rule("vfile-message-control", ignoreMessages)
 
 const info_deny = chalk.red("deny ")
 const info_allow = chalk.green("allow")
+const info_none = chalk.gray("none ")
 const info_filename = '            %s --> %s'
 const info_rule = `Rule: %s ${chalk.yellow('%s')}`
 
@@ -24,7 +25,7 @@ function getRegExp(regex) {
     regex = new RegExp(regex);
   }
 
-  if (isRegExp(regex)) {
+  if (!isRegExp(regex)) {
     throw Error('Required "regex" option need to be a RegEx or RegExp-String');
   }
   return regex
@@ -48,7 +49,7 @@ function getTest(test) {
 }
 
 
-function match(id, option, message) {
+function match(option, message) {
 
   // Type 1: option := string
   // Type 2: option := [string]
@@ -58,7 +59,7 @@ function match(id, option, message) {
 
   const [idMatch, testMatch] = wrapArray(option)
 
-  const matchedId = minimatch(id, idMatch, {nocase: true, debug: false})
+  const matchedId = minimatch(message.id, idMatch, {nocase: true, debug: false})
 
   if (matchedId && testMatch) {
     return getTest(testMatch)(message)
@@ -74,40 +75,41 @@ function ignoreMessages(ast, file, options) {
     return
   }
 
-  const optionName = options.optionName || "id"
+  const optionName = options.optionName //|| "id"
   const stripPathPrefix = options.stripPathPrefix || []
 
   file.messages = file.messages.filter((message) => {
 
-    const id = name(message, optionName, stripPathPrefix)
-    message.id = id
+    message.id = name(message, optionName, stripPathPrefix)
 
-    const removeMessage = checkRemove(id, message)
+    const removeMessage = checkRemove(message)
     return !removeMessage
   })
 
 
-  function checkRemove(id, message) {
+  function checkRemove(message) {
 
 
     for (const option of options.deny) {
-      if (match(id, option, message)) {
+      if (match(option, message)) {
 
         debug(info_rule, info_deny, option)
 
         if (options.allow) {
           for (const option of options.allow) {
-            if (match(id, option, message)) {
+            if (match(option, message)) {
               debug(info_rule, info_allow, option)
-              debug(info_filename, id, info_allow)
+              debug(info_filename, message.id, info_allow)
               return false
             }
           }
         }
-        debug(info_filename, id, info_deny)
+        debug(info_filename, message.id, info_deny)
         return true
       }
     }
+    debug(info_rule, info_none, "no matching rules")
+    debug(info_filename, message.id, info_allow)
     return false
   }
 
@@ -118,7 +120,7 @@ function ignoreMessages(ast, file, options) {
         name = name.substring(v.length)
       }
     })
-    const option = message[optionName] ? (":" + message[optionName]) : ""
+    const option = (optionName && message[optionName]) ? (":" + message[optionName]) : ""
     return `${name}:${message.source}:${message.ruleId}${option}`
   }
 }
