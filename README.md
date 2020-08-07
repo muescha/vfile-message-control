@@ -53,10 +53,10 @@ A matcher can be one of these combinations:
 - Type 5: `matcher` := [`globString`, `function`]
 
 With these options:
-- `globString` := a string minimatch glob string.
-- `regexpString` := a string which would converted to a `RegExp.` Used like `new RegExp(regexpString,'i').test(message.message)`.
-- `rexexp` = a `RegExp` called with parameter  `.test(message.message)`.
-- `function` = a function called with parameter `message`.
+- `globString`: a minimatch glob string.
+- `regexpString`: a string which would converted to a `RegExp.` Used like `new RegExp(regexpString,'i').test(message.message)`.
+- `rexexp`: a `RegExp` called with parameter  `regexp.test(message.message)`.
+- `function`: a function called with parameter `function(message)`.
 
 ## Examples
 
