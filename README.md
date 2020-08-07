@@ -6,7 +6,18 @@ it uses https://github.com/isaacs/minimatch.
 
 ## `id`
 
-the id is calculated from the filename and rule name and the location of the message and optional an parameter defined by `optionName`
+This plugin filter `vFile` messages based on a calculacted id. The id is calculated from the filename and rule name and the location of the message and optional an additional parameter defined by `optionName`
+
+Format:
+
+```
+`${name}:${source}:${ruleId}[:${message[optionName]}]`
+```
+
+Example:
+```
+docs/path/filename.md:179:1-179:21:remark-lint:no-multiple-toplevel-headings
+```
 
 ## Options
 
@@ -16,11 +27,11 @@ an array of `matcher` to remove messages
 
 ### Option `allow`
 
-an array of `matcher` to keep messages (evaluated after deny)  
+an array of `matcher` to keep messages (evaluated only after an match with `deny`)  
 
 ### Option `stripPathPrefix`
 
-an array remove from the start of the calculated id  
+an array to remove from the path of the calculated id 
 
 ### Option `optionName`
 
