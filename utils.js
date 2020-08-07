@@ -3,13 +3,18 @@
 const minimatch = require("minimatch")
 
 // Utils
+
+// special for plain strings: they are not "instanceof String"
 const isString = test => typeof test === "string";
+
 const isRegExp = test => test instanceof RegExp;
+
 const isFunction = test => test instanceof Function;
+
 const wrapArray = value => Array.isArray(value) ? value : [value]
 
 function getRegExp(regex) {
-  // special for plain strings: they are not "instanceof String"
+  
   if (isString(regex)) {
     regex = new RegExp(regex);
   }
