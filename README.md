@@ -6,7 +6,9 @@ It uses https://github.com/isaacs/minimatch.
 
 ## `id`
 
-This plugin filter `vFile` messages based on a calculated id. The id is calculated from the filename and rule name and the location of the message and optional an additional parameter defined by `optionName`.
+This plugin filter `vFile` messages based on a calculated id. 
+
+The id includes the filename, the rule name and the location of the message and optional an additional parameter defined by `optionName`.
 
 Format:
 
