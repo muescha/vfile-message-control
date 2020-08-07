@@ -25,17 +25,17 @@ docs/path/filename.md:179:1-179:21:remark-lint:no-multiple-toplevel-headings
 
 An array of `matcher` to remove messages  
 
-### Option `allow`
+### Option `allow` (optional)
 
 An array of `matcher` to keep messages (evaluated only after a match with `deny`)  
 
-### Option `stripPathPrefix`
+### Option `stripPathPrefix` (optional)
 
 An array of string to remove from the path of the calculated id 
 
-### Option `optionName`
+### Option `optionName` (optional)
 
-A string for an option appended to the id
+A string for an option appended to the id. This can be used from plugins to add more info to a rule.
 
 ### Parameter `matcher`
 
@@ -53,10 +53,10 @@ A matcher can be one of these combinations:
 - Type 5: `matcher` := [`globString`, `function`]
 
 With these options:
-- `globString` := a string minimatch glob string
-- `regexpString` := a string which would converted to a RegExp
-- `rexexp` = a RegExp called with parameter  `.test(message.message)
-- `function` = a function called with parameter `message`
+- `globString` := a string minimatch glob string.
+- `regexpString` := a string which would converted to a `RegExp.` Used like `new RegExp(regexpString,'i').test(message.message)`.
+- `rexexp` = a `RegExp` called with parameter  `.test(message.message)`.
+- `function` = a function called with parameter `message`.
 
 ## Examples
 
