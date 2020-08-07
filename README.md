@@ -1,12 +1,12 @@
-# vfile-message-control
+## `vfile-message-control`
 
-remark-lint plugin to filter messages from other linters.
+A `remark-lint` plugin to filter [messages](https://github.com/vfile/vfile#vfilemessages) in a [`vFile`](https://github.com/vfile/vfile) from other linters.
 
-it uses https://github.com/isaacs/minimatch.
+It uses https://github.com/isaacs/minimatch.
 
 ## `id`
 
-This plugin filter `vFile` messages based on a calculacted id. The id is calculated from the filename and rule name and the location of the message and optional an additional parameter defined by `optionName`
+This plugin filter `vFile` messages based on a calculated id. The id is calculated from the filename and rule name and the location of the message and optional an additional parameter defined by `optionName`.
 
 Format:
 
@@ -23,28 +23,28 @@ docs/path/filename.md:179:1-179:21:remark-lint:no-multiple-toplevel-headings
 
 ### Option `deny`
 
-an array of `matcher` to remove messages  
+An array of `matcher` to remove messages  
 
 ### Option `allow`
 
-an array of `matcher` to keep messages (evaluated only after an match with `deny`)  
+An array of `matcher` to keep messages (evaluated only after a match with `deny`)  
 
 ### Option `stripPathPrefix`
 
-an array to remove from the path of the calculated id 
+An array of string to remove from the path of the calculated id 
 
 ### Option `optionName`
 
-an string for an option appended to the id
+A string for an option appended to the id
 
 ### Parameter `matcher`
 
-always check the `globstring` against `id` and if this matched the second parameter check with parameter `message.message`, function check with parameter `message`
+Always check the `globstring` against `id` and if this matched the second parameter check with parameter `message.message`, function check with parameter `message`
 
 - matcher := `string`
 - matcher := `[string [, (string|regexp|function)]]`
 
-can be this combinations:
+A matcher can be one of these combinations:
 
 - Type 1: `matcher` :=  `globString` 
 - Type 2: `matcher` := [`globString`]
@@ -52,7 +52,7 @@ can be this combinations:
 - Type 4: `matcher` := [`globString`, `regexp`]
 - Type 5: `matcher` := [`globString`, `function`]
 
-with this options:
+With these options:
 - `globString` := a string minimatch glob string
 - `regexpString` := a string which would converted to a RegExp
 - `rexexp` = a RegExp called with parameter  `.test(message.message)
@@ -79,9 +79,9 @@ Example configuration:
 
 ![Screenshot](./screenshot.png)
 
-## Loggin
+## Logger
 
-It uses the [`debug`](https://www.npmjs.com/package/debug) package, so you can enable loggin with
+It uses the [`debug`](https://www.npmjs.com/package/debug) package, so you can enable the logs with
 
 ```shell
 DEBUG=vfile-message-control remark
