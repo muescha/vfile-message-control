@@ -70,7 +70,7 @@ Example configuration:
       {
         "deny":[
           "docs/docs/headless-cms-1.md:*:retext-repeated-words:*",
-          ["docs/docs/README.md:remar-lint:retext-repeated-words:*", '^The parameter'],
+          ["docs/docs/README.md:remark-lint:retext-repeated-words:*", '^The parameter'],
         ],
         "allow": [
           "docs/docs/headless-cms-1.md:*:retext-repeated-words:graphql",
