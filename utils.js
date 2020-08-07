@@ -37,8 +37,10 @@ function getTest(test) {
     }
   }
 
+  const regExp = getRegExp(test);
+  
   return (message) => {
-    return getRegExp(test).test(message.message)
+    return regExp.test(message.message)
   }
 }
 
