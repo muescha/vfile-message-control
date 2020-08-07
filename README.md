@@ -74,7 +74,7 @@ Example configuration:
           "docs/docs/headless-cms-1.md:*:retext-repeated-words:graphql",
         ],
       }
-    ],
+    ]
 ```
 
 ![Screenshot](./screenshot.png)
