@@ -12,11 +12,11 @@ the id is calculated from the filename and rule name and the location of the mes
 
 ### Option `deny`
 
-an array of minimatch globs to remove messages  
+an array of `matcher` to remove messages  
 
 ### Option `allow`
 
-an array of minimatch globs to keep messages (evaluated after deny)  
+an array of `matcher` to keep messages (evaluated after deny)  
 
 ### Option `stripPathPrefix`
 
@@ -24,7 +24,28 @@ an array remove from the start of the calculated id
 
 ### Option `optionName`
 
-an string for an option appended to the id    
+an string for an option appended to the id
+
+### Parameter `matcher`
+
+always check the `globstring` against `id` and if this matched the second parameter check with parameter `message.message`, function check with parameter `message`
+
+- matcher := `string`
+- matcher := `[string [, (string|regexp|function)]]`
+
+can be this combinations:
+
+- Type 1: `matcher` :=  `globString` 
+- Type 2: `matcher` := [`globString`]
+- Type 3: `matcher` := [`globString`, `regexpString`]
+- Type 4: `matcher` := [`globString`, `regexp`]
+- Type 5: `matcher` := [`globString`, `function`]
+
+with this options:
+- `globString` := a string minimatch glob string
+- `regexpString` := a string which would converted to a RegExp
+- `rexexp` = a RegExp called with parameter  `.test(message.message)
+- `function` = a function called with parameter `message`
 
 ## Examples
 
@@ -36,6 +57,7 @@ Example configuration:
       {
         "deny":[
           "docs/docs/headless-cms-1.md:*:retext-repeated-words:*",
+          ["docs/docs/README.md:remar-lint:retext-repeated-words:*", '^The parameter'],
         ],
         "allow": [
           "docs/docs/headless-cms-1.md:*:retext-repeated-words:graphql",
@@ -45,6 +67,14 @@ Example configuration:
 ```
 
 ![Screenshot](./screenshot.png)
+
+## Loggin
+
+It uses the [`debug`](https://www.npmjs.com/package/debug) package, so you can enable loggin with
+
+```shell
+DEBUG=vfile-message-control remark
+```
 
 ## Note
 
