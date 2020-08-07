@@ -35,7 +35,7 @@ An array of string to remove from the path of the calculated id
 
 ### Option `optionName` (optional)
 
-A string for an option appended to the id. This can be used from plugins to add more info to a rule.
+A string for a property of the message appended to the id. 
 
 ### Parameter `matcher`
 
