@@ -1,4 +1,5 @@
 ## TODO List
 
-- [ ] write tests
+- [x] write tests
+- [ ] write more tests
 - [ ] deprecate `optionName` in favor of function matcher
