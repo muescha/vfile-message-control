@@ -28,7 +28,7 @@
   "homepage": "https://github.com/muescha/vfile-message-control#readme",
   "dependencies": {
     "chalk": "^4.0.0",
-    "debug": "^4.1.1",
+    "debug": "^4.3.1",
     "minimatch": "^3.0.5",
     "unified-lint-rule": "^1.0.2"
   },
